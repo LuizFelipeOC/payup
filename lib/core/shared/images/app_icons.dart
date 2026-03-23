@@ -13,4 +13,5 @@ class AppIcons {
   static const String trash = 'assets/icons/trash 1.svg';
   static const String logo = 'assets/icons/logo.svg';
   static const String vector = 'assets/icons/Vector.svg';
+  static const String frame = 'assets/icons/Frame.svg';
 }
