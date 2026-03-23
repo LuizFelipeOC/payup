@@ -1,16 +1,45 @@
-# payup
+# PayUp
 
-A new Flutter project.
+Aplicativo Flutter com foco em componentes reutilizáveis e base de design system.
 
-## Getting Started
+## Visão geral
 
-This project is a starting point for a Flutter application.
+Este projeto inclui:
 
-A few resources to get you started if this is your first Flutter project:
+- Tema centralizado de cores e tipografia
+- Fontes K2D configuradas no projeto
+- Ícones SVG em assets/icons
+- Componente de botão com variantes
+- Wrapper para renderização de SVG
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Requisitos
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter SDK 3.x
+- Dart SDK 3.x
+- Android Studio ou Xcode (para emuladores/simuladores)
+
+## Como executar
+
+1. Instale as dependências:
+	flutter pub get
+
+2. Rode o aplicativo:
+	flutter run
+
+## Estrutura básica
+
+- lib/core/themes: cores, gradientes e tipografia
+- lib/core/shared/images: constantes de assets
+- lib/core/shared/widgets: componentes reutilizáveis
+- assets/fonts: arquivos de fonte
+- assets/icons: ícones SVG
+
+## Dependências principais
+
+- flutter_svg
+
+## Próximos passos
+
+- Adicionar telas de exemplo usando os componentes base
+- Criar guia visual para variantes de botão e ícones
+- Incluir testes de widgets para componentes compartilhados
