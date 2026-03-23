@@ -4,6 +4,7 @@ import 'package:payup/core/themes/app_colors.dart';
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
+      scaffoldBackgroundColor: AppColors.backgroundPrimary,
       brightness: Brightness.light,
       useMaterial3: false,
       fontFamily: 'K2D',
