@@ -11,4 +11,5 @@ class AppIcons {
   static const String search = 'assets/icons/search.svg';
   static const String shield = 'assets/icons/shield.svg';
   static const String trash = 'assets/icons/trash 1.svg';
+  static const String logo = 'assets/icons/logo.svg';
 }
