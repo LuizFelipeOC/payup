@@ -14,4 +14,5 @@ class AppIcons {
   static const String logo = 'assets/icons/logo.svg';
   static const String vector = 'assets/icons/Vector.svg';
   static const String frame = 'assets/icons/Frame.svg';
+  static const String belll = 'assets/icons/bell.svg';
 }
