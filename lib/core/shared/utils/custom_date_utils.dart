@@ -12,7 +12,7 @@ class CustomDateUtils {
 
       return WeekDayModel(
         index: date.weekday,
-        label: formatter.format(date).toLowerCase(),
+        label: formatter.format(date).toUpperCase().replaceAll('.', ''),
         date: date,
       );
     });
