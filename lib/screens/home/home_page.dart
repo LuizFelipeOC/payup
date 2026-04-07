@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payup/screens/home/widgets/home_weekly_filter.dart';
+import 'package:payup/screens/home/widgets/home_weekly_filter/home_weekly_filter.dart';
 import 'package:payup/screens/home/widgets/user_app_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(child: SizedBox(height: 55)),
-          HomeWeeklyFilter(),
+          HomeWeeklyFilter(callbackFunction: (value) {}),
         ],
       ),
     );
