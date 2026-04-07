@@ -23,4 +23,14 @@ class HomeWeeklyController extends ChangeNotifier {
     selectedWeekDay = weekDay;
     notifyListeners();
   }
+
+  void getCurrentWeekDay() {
+    final now = DateTime.now();
+    final currentWeekDay = weekDays.firstWhere(
+      (day) => day.index == now.weekday,
+      orElse: () => weekDays.first,
+    );
+
+    setSelectedWeekDay(currentWeekDay);
+  }
 }

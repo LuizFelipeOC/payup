@@ -17,6 +17,7 @@ class _HomeWeeklyFilterState extends State<HomeWeeklyFilter> {
   @override
   void initState() {
     controller.getListWeeklyDays();
+    controller.getCurrentWeekDay();
     super.initState();
   }
 
@@ -37,19 +38,18 @@ class _HomeWeeklyFilterState extends State<HomeWeeklyFilter> {
               itemBuilder: (context, index) {
                 final weekDay = controller.weekDays[index];
 
-                return InkWell(
-                  onTap: () {
-                    widget.callbackFunction(weekDay);
-                    controller.setSelectedWeekDay(weekDay);
-                  },
-                  child: Container(
-                    width: 100,
-                    margin: EdgeInsets.symmetric(horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: controller.selectedWeekDay == weekDay ? Colors.blue : Colors.grey,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(child: Text(weekDay.label)),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ChoiceChip(
+                    label: Text(weekDay.label),
+                    selected: weekDay.index == controller.selectedWeekDay?.index,
+                    onSelected: (value) {
+                      widget.callbackFunction(weekDay);
+                      controller.setSelectedWeekDay(weekDay);
+                    },
+                    side: weekDay.index == controller.selectedWeekDay?.index
+                        ? BorderSide(color: Theme.of(context).primaryColor, width: 1)
+                        : BorderSide(color: Theme.of(context).chipTheme.backgroundColor!, width: 1),
                   ),
                 );
               },
