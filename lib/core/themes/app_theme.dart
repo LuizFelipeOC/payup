@@ -37,6 +37,21 @@ class AppTheme {
         ),
         hintStyle: TextStyle(color: AppColors.textLabel, fontSize: 16, fontWeight: FontWeight.w900),
       ),
+      chipTheme: ChipThemeData(
+        backgroundColor: AppColors.backgroundComponents,
+        selectedColor: AppColors.backgroundComponents,
+        labelStyle: TextStyle(color: AppColors.textParagraph, fontSize: 16),
+        secondaryLabelStyle: TextStyle(
+          color: AppColors.accentBrand,
+          fontSize: 16,
+          fontWeight: FontWeight.w900,
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(color: AppColors.backgroundComponents, width: 1),
+        ),
+      ),
     );
   }
 
