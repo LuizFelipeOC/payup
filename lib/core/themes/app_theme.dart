@@ -52,6 +52,16 @@ class AppTheme {
           side: BorderSide(color: AppColors.backgroundComponents, width: 1),
         ),
       ),
+      cardTheme: cardTheme,
+    );
+  }
+
+  static CardThemeData get cardTheme {
+    return CardThemeData(
+      color: AppColors.backgroundComponents,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
+      elevation: 0,
+      margin: const EdgeInsets.all(8),
     );
   }
 
