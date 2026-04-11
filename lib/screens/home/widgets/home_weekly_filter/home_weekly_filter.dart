@@ -12,12 +12,11 @@ class HomeWeeklyFilter extends StatefulWidget {
 }
 
 class _HomeWeeklyFilterState extends State<HomeWeeklyFilter> {
-  final controller = HomeWeeklyController();
+  final HomeWeeklyController controller = HomeWeeklyController();
 
   @override
   void initState() {
-    controller.getListWeeklyDays();
-    controller.getCurrentWeekDay();
+    controller.initialize();
     super.initState();
   }
 
@@ -42,12 +41,13 @@ class _HomeWeeklyFilterState extends State<HomeWeeklyFilter> {
                   padding: const EdgeInsets.all(8.0),
                   child: ChoiceChip(
                     label: Text(weekDay.label),
-                    selected: weekDay.index == controller.selectedWeekDay?.index,
+                    selected: weekDay.index == controller.value?.index,
                     onSelected: (value) {
                       widget.callbackFunction(weekDay);
                       controller.setSelectedWeekDay(weekDay);
+                      controller.isToday(weekDay);
                     },
-                    side: weekDay.index == controller.selectedWeekDay?.index
+                    side: weekDay.index == controller.value?.index
                         ? BorderSide(color: Theme.of(context).primaryColor, width: 1)
                         : BorderSide(color: Theme.of(context).chipTheme.backgroundColor!, width: 1),
                   ),
