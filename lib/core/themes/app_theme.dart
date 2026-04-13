@@ -53,6 +53,20 @@ class AppTheme {
         ),
       ),
       cardTheme: cardTheme,
+      textButtonTheme: textTheme,
+    );
+  }
+
+  static TextButtonThemeData get textTheme {
+    return TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: AppColors.accentBrand,
+        textStyle: TextStyle(
+          color: AppColors.accentBrand,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 
