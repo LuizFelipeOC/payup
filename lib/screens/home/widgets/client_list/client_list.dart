@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:payup/core/extensions/media_query_extension.dart';
 import 'package:payup/core/models/client_model.dart';
 import 'package:payup/core/shared/widgets/card_client/card_client.dart';
-import 'package:payup/core/shared/widgets/card_payments/card_payments.dart';
 
 class ClientList extends StatelessWidget {
   final List<ClientModel> clients;
+  final Function(ClientModel client)? onTap;
 
-  const ClientList({super.key, this.clients = const []});
+  const ClientList({super.key, this.clients = const [], this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,10 @@ class ClientList extends StatelessWidget {
               scrollDirection: .horizontal,
               padding: EdgeInsets.only(top: 12, left: 10, right: 10),
               itemBuilder: (context, index) {
-                return CardClient(text: clients[index].name);
+                return GestureDetector(
+                  onTap: () => onTap?.call(clients[index]),
+                  child: CardClient(text: clients[index].name),
+                );
               },
             ),
           ),

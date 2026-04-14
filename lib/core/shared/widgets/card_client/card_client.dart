@@ -30,7 +30,9 @@ class CardClient extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 8),
-              Text(text, style: Theme.of(context).textTheme.labelMedium),
+              Flexible(
+                child: Text(text, style: Theme.of(context).textTheme.labelMedium, overflow: .fade),
+              ),
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payup/core/shared/widgets/buttons/button.dart';
 import 'package:payup/core/shared/widgets/card_payments/card_payments.dart';
+import 'package:payup/screens/home/home_controller.dart';
 import 'package:payup/screens/home/widgets/client_list/client_list.dart';
 import 'package:payup/screens/home/widgets/home_weekly_filter/home_weekly_controller.dart';
 import 'package:payup/screens/home/widgets/home_weekly_filter/home_weekly_filter.dart';
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   final listPaymentsToReceive = [];
 
   final HomeWeeklyController weeklyController = HomeWeeklyController();
+  final HomeController homeController = HomeController();
 
   @override
   void initState() {
@@ -67,14 +69,16 @@ class _HomePageState extends State<HomePage> {
 
           SliverToBoxAdapter(child: SizedBox(height: 48)),
 
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 10, left: 10),
-              child: Button(label: 'Adicionar Cliente', onPressed: () {}),
+          if (homeController.clients.isNotEmpty) ...[
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, left: 10),
+                child: Button(label: 'Adicionar Cliente', onPressed: () {}),
+              ),
             ),
-          ),
 
-          ClientList(),
+            ClientList(clients: homeController.clients, onTap: (client) {}),
+          ],
         ],
       ),
     );
