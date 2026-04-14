@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payup/core/shared/images/app_icons.dart';
 import 'package:payup/core/shared/widgets/svg/app_svg.dart';
-import 'package:payup/screens/login/login_screen.dart';
+import 'package:payup/screens/home/home_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> mockLoginNavigation() async {
     await Future.delayed(const Duration(seconds: 3));
     if (mounted) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 

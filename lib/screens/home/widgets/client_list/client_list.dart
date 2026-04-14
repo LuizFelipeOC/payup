@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:payup/core/extensions/media_query_extension.dart';
+import 'package:payup/core/models/client_model.dart';
 import 'package:payup/core/shared/widgets/card_client/card_client.dart';
+import 'package:payup/core/shared/widgets/card_payments/card_payments.dart';
 
 class ClientList extends StatelessWidget {
-  const ClientList({super.key});
+  final List<ClientModel> clients;
+
+  const ClientList({super.key, this.clients = const []});
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +19,17 @@ class ClientList extends StatelessWidget {
         children: [
           SizedBox(height: 20),
           TextButton(onPressed: () {}, child: Text('Ver todos')),
+
+          SizedBox(height: 10),
           SizedBox(
             height: height * .2,
             child: ListView.builder(
               physics: BouncingScrollPhysics(),
-              itemCount: 5,
+              itemCount: clients.length,
               scrollDirection: .horizontal,
               padding: EdgeInsets.only(top: 12, left: 10, right: 10),
               itemBuilder: (context, index) {
-                return CardClient(text: 'teste');
+                return CardClient(text: clients[index].name);
               },
             ),
           ),

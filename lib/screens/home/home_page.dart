@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payup/core/shared/widgets/buttons/button.dart';
 import 'package:payup/core/shared/widgets/card_payments/card_payments.dart';
-import 'package:payup/screens/home/widgets/client_list.dart';
+import 'package:payup/screens/home/widgets/client_list/client_list.dart';
 import 'package:payup/screens/home/widgets/home_weekly_filter/home_weekly_controller.dart';
 import 'package:payup/screens/home/widgets/home_weekly_filter/home_weekly_filter.dart';
 import 'package:payup/screens/home/widgets/user_app_bar.dart';
@@ -16,11 +16,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final listPaymentsToReceive = [];
 
-  final HomeWeeklyController controller = HomeWeeklyController();
+  final HomeWeeklyController weeklyController = HomeWeeklyController();
 
   @override
   void initState() {
-    controller.initialize();
+    weeklyController.initialize();
     super.initState();
   }
 
@@ -34,8 +34,8 @@ class _HomePageState extends State<HomePage> {
 
           HomeWeeklyFilter(
             callbackFunction: (value) {
-              controller.setSelectedWeekDay(value);
-              controller.isToday(value);
+              weeklyController.setSelectedWeekDay(value);
+              weeklyController.isToday(value);
             },
           ),
 
@@ -45,14 +45,14 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: ValueListenableBuilder(
-                valueListenable: controller,
+                valueListenable: weeklyController,
                 builder: (_, _, _) {
-                  if (controller.isLoading) return const SizedBox();
+                  if (weeklyController.isLoading) return const SizedBox();
 
-                  final isToday = controller.isTodayValue.value;
+                  final isToday = weeklyController.isTodayValue.value;
 
                   return Text(
-                    isToday ? 'Hoje' : controller.value?.label ?? '',
+                    isToday ? 'Hoje' : weeklyController.value?.label ?? '',
                     style: Theme.of(context).textTheme.titleMedium,
                   );
                 },
