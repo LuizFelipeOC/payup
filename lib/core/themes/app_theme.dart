@@ -57,6 +57,13 @@ class AppTheme {
     );
   }
 
+  static BottomSheetThemeData get bottomSheetTheme {
+    return BottomSheetThemeData(
+      backgroundColor: AppColors.accentOrange,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+    );
+  }
+
   static TextButtonThemeData get textTheme {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
