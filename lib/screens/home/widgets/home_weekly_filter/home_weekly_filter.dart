@@ -27,7 +27,7 @@ class _HomeWeeklyFilterState extends State<HomeWeeklyFilter> {
         height: 50,
         child: AnimatedBuilder(
           animation: controller,
-          builder: (_, __) {
+          builder: (_, _) {
             if (controller.isLoading) {
               return Center(child: CircularProgressIndicator());
             }
