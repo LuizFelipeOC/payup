@@ -11,49 +11,65 @@ class AppTheme {
       primaryColor: AppColors.accentBrand,
       colorScheme: _colorScheme(),
       textTheme: _textThemeData(),
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: AppColors.backgroundComponents,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.borderPrimary, width: 1),
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.accentRed, width: 1),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.accentRed, width: 1),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.borderPrimary, width: 1),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.accentGreen, width: 1),
-        ),
-        hintStyle: TextStyle(color: AppColors.textLabel, fontSize: 16, fontWeight: FontWeight.w900),
-      ),
-      chipTheme: ChipThemeData(
-        backgroundColor: AppColors.backgroundComponents,
-        selectedColor: AppColors.backgroundComponents,
-        labelStyle: TextStyle(color: AppColors.textParagraph, fontSize: 16),
-        secondaryLabelStyle: TextStyle(
-          color: AppColors.accentBrand,
-          fontSize: 16,
-          fontWeight: FontWeight.w900,
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: AppColors.backgroundComponents, width: 1),
-        ),
-      ),
+      inputDecorationTheme: _inputDecorationTheme(),
+      chipTheme: _chipThemeData(),
       cardTheme: cardTheme,
       textButtonTheme: textTheme,
+      switchTheme: SwitchThemeData(
+        thumbColor: WidgetStatePropertyAll(AppColors.textHeading),
+        trackColor: WidgetStatePropertyAll(AppColors.backgroundComponents),
+      ),
+      dividerTheme: DividerThemeData(color: AppColors.borderPrimary, thickness: 1),
+    );
+  }
+
+  static ChipThemeData _chipThemeData() {
+    return ChipThemeData(
+      backgroundColor: AppColors.backgroundComponents,
+      selectedColor: AppColors.backgroundComponents,
+      labelStyle: TextStyle(color: AppColors.textParagraph, fontSize: 16),
+      secondaryLabelStyle: TextStyle(
+        color: AppColors.accentBrand,
+        fontSize: 16,
+        fontWeight: FontWeight.w900,
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: AppColors.backgroundComponents, width: 1),
+      ),
+    );
+  }
+
+  static InputDecorationTheme _inputDecorationTheme() {
+    return InputDecorationTheme(
+      filled: true,
+      isDense: true,
+      fillColor: AppColors.backgroundSecondary,
+      contentPadding: const EdgeInsets.all(12),
+      border: OutlineInputBorder(
+        borderRadius: .circular(12),
+        borderSide: BorderSide(color: AppColors.textHeading, width: 1),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: .circular(12),
+        borderSide: BorderSide(color: AppColors.accentRed, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: .circular(12),
+        borderSide: BorderSide(color: AppColors.accentRed, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: .circular(12),
+        borderSide: BorderSide(color: AppColors.borderPrimary, width: 2),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: .circular(12),
+        borderSide: BorderSide(color: AppColors.textParagraph, width: 1),
+      ),
+      suffixIconColor: AppColors.textHeading,
+      suffixStyle: TextStyle(color: AppColors.textParagraph, fontSize: 13),
+      hintStyle: TextStyle(color: AppColors.textPlaceholder, fontSize: 14),
     );
   }
 
