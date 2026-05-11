@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:payup/core/shared/widgets/buttons/button.dart';
 import 'package:payup/core/shared/widgets/fields/fields.dart';
 import 'package:payup/core/themes/app_colors.dart';
+import 'package:payup/screens/home/widgets/client_form/client_form_controller.dart';
+import 'package:payup/core/shared/widgets/rounded_dropdown.dart';
 
 class ClientForm extends StatefulWidget {
   const ClientForm({super.key});
@@ -11,6 +13,13 @@ class ClientForm extends StatefulWidget {
 }
 
 class _ClientFormState extends State<ClientForm> {
+  final ClientFormController controller = ClientFormController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final texStyle = Theme.of(context).textTheme;
@@ -62,25 +71,22 @@ class _ClientFormState extends State<ClientForm> {
                   Row(
                     children: [
                       Text('Cobrança recorrente?'),
-                      Switch(value: true, onChanged: (value) {}),
+                      Switch(
+                        value: controller.isConcurrentLevy,
+                        onChanged: (value) =>
+                            setState(() => controller.toggleConcurrentLevy(value)),
+                      ),
                     ],
                   ),
 
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.backgroundComponents,
-                      borderRadius: BorderRadius.circular(28),
-                    ),
-                    padding: .symmetric(horizontal: 12, vertical: 8),
-                    child: Row(
-                      crossAxisAlignment: .center,
-                      mainAxisAlignment: .center,
-                      spacing: 4,
-                      children: [
-                        Text('Mensalmente', style: texStyle.labelMedium),
-                        Icon(Icons.arrow_drop_down, size: 16, color: AppColors.textLabel),
-                      ],
-                    ),
+                  RoundedDropdown(
+                    items: controller.typeLevyOptions,
+                    value: controller.selectedTypeLevy,
+                    onSelected: (v) => setState(() => controller.setSelectedTypeLevy(v)),
+                    backgroundColor: AppColors.backgroundComponents,
+                    textStyle: texStyle.labelMedium,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    maxWidth: 140,
                   ),
                 ],
               ),
@@ -112,20 +118,23 @@ class _ClientFormState extends State<ClientForm> {
             const SizedBox(height: 24),
 
             Row(
-              mainAxisAlignment: .end,
-              spacing: 12,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SizedBox(
                   height: 40,
                   child: Button(
                     label: 'Cancelar',
-                    onPressed: Navigator.of(context).pop,
+                    onPressed: () => Navigator.of(context).pop(),
                     variant: ButtonVariant.secondary,
                   ),
                 ),
+                const SizedBox(width: 12),
                 SizedBox(
                   height: 40,
-                  child: Button(label: 'Salvar alterações', onPressed: Navigator.of(context).pop),
+                  child: Button(
+                    label: 'Salvar alterações',
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
                 ),
               ],
             ),
